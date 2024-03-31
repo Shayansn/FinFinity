@@ -1,0 +1,55 @@
+// User.java - Shayan Saberi-Nikou
+public class User {
+    private String username;
+    private String password;
+    private String email;
+    private boolean isAccountActive;
+
+    public User(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.isAccountActive = true; // Account is active upon creation
+    }
+
+    // Getters and Setters
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isAccountActive() {
+        return isAccountActive;
+    }
+
+    // Simulate account deletion
+    public void deleteAccount() {
+        this.isAccountActive = false;
+        System.out.println("User account has been deleted.");
+    }
+
+    // Simulate account creation; in a real application, this would involve more checks and database interaction.
+    public static User createAccount(String username, String password, String email) {
+        // Additional checks for username, password complexity, and email format can be implemented here
+        return new User(username, password, email);
+    }
+}
