@@ -1,0 +1,133 @@
+//Budget Class - Christopher Maldonado
+/*
+In this class I will be giving the user the option to add a budget object
+*/
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Budget
+{
+	 private double amount;
+	 private String categoryName;
+	 private String date;
+	 private Scanner scan = new Scanner(System.in);
+	 
+	 public Budget() {} // Default Constructor
+	 
+	 public Budget(double amount_, String categoryName_) // Constructor with amount and name args
+	 {
+	     this.amount = amount_;
+	     this.categoryName = categoryName_;
+	     this.date = "";
+	 }b
+	 
+	 public Budget(double amount_, String categoryName_, String date_) // Constructor with amount, name args, and date args
+	 {
+	     this.amount = amount_;
+	     this.categoryName = categoryName_;
+	     this.date = date_;
+	 }
+
+// FUNCTIONS
+	 /* This is a multi-purpose function that will take the userId and make sure that user exists then
+	  * allows the user to create a new budget or change an existing one 
+	  */
+	 public void setBudget(/*String userId*/)
+	 {
+		/* 
+	     if(!user.containsKey(userId))
+	     {
+	    	 System.out.println("No user found");
+	    	 return;
+	     }
+	     */
+		 
+		 System.out.println("Enter Catagory");
+	     this.categoryName = scan.nextLine();
+	     
+	     System.out.println("Enter Amount");
+	     setAmount(scan.nextDouble());
+	 }
+	 
+	 // Simple printing of a budget
+	 public void printBudget()
+	 {
+		 System.out.println("Catagory: " + this.getCatagory());
+		 System.out.println("Amount: " + this.getAmount());
+		 System.out.println();
+	 }
+	 // Printing with formatted date
+	 public void printBudgetWithDate()
+	 {
+		 System.out.println("Catagory: " + this.getCatagory());
+		 System.out.println("Amount: " + this.getAmount());
+		 System.out.println("Date: " + dateConverter(this.date));
+		 System.out.println();
+	 }
+
+     // Looks at amount inputed by user and checks to make sure it is a valid input based on if it is a double or positive
+	 public void setAmount(double amount_)
+	 {
+		 try
+		 {
+			 while(amount_ < 0)
+			 {
+				 System.out.println("Enter Positive Number");
+				 scan.nextDouble();
+			 }
+		 }
+		 catch(InputMismatchException e)
+		 {
+			 System.out.println("Enter double number");
+			 scan.nextDouble();
+		 }
+		 
+		 this.amount = amount_;
+	 }
+	 
+	 // This formats the string given and makes it a readable date for the user
+	 private String dateConverter(String Date)
+	 {
+		 return Date.substring(0, 1) + "/" + Date.substring(2, 3) + "/" + Date.substring(4, 8);
+	 }
+	 
+// GETTERS AND SETTERS
+	 public String getCatagory()
+	 {
+		 return this.categoryName;
+	 }
+	 
+	 public void setCatagory(String category_)
+	 {
+		 this.categoryName = category_;
+	 }
+	 
+	 public String getDate()
+	 {
+		 return this.date;
+	 }
+	 
+	 public void setDate(String date_)
+	 {
+		 this.date = date_;
+	 }
+	 
+	 public double getAmount()
+	 {
+		 return this.amount;
+	 }
+	 
+// MAIN
+	 public static void main(String[] args)
+	 {
+		 Budget b0 = new Budget();
+		 Budget b1 = new Budget(200.0, "Rent");
+		 Budget b2 = new Budget(250.0, "Car", "12312024");
+		 		 
+		 b0.setBudget();
+		 
+		 b0.printBudget();
+		 b1.printBudget();
+		 b2.printBudgetWithDate();
+	 }
+}
