@@ -1,3 +1,12 @@
+//GoalManagementSystem.java Jerin Mulangan
+// This class represents a goal setting class, it allows the user to set, edit and view their goals and progress.
+
+// Test Case 1: Create a new goal with valid attributes
+// Expected Result: The new goal is created and appropriate details are stored.
+
+// Test Case 2: Edit an existing goal's attributes.
+// Expected Result: The goal's attributes are altered and stored in the system.
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
