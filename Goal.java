@@ -1,3 +1,5 @@
+//Goal.java Jerin Mulangan
+
 import java.text.DecimalFormat;
 
 public class Goal {
