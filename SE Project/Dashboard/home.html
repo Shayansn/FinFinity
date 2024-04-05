@@ -1,0 +1,124 @@
+//Hima Nagi Reddy
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chatbot Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, rgba(6, 6, 225, 0.457) 50%, rgb(154, 159, 178) 80%);
+        margin: 0;
+        padding: 0;
+    }
+    .chat-container {
+        max-width: 500px;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .chat-header {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .chat-body {
+        padding: 20px;
+        overflow-y: scroll;
+        height: 300px;
+    }
+    .chat-message {
+        margin-bottom: 20px;
+    }
+    .user-message {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        float: right;
+    }
+    .bot-message {
+        background-color: #f0f0f0;
+        padding: 10px;
+        border-radius: 10px;
+        float: left;
+    }
+    .input-container {
+        padding: 20px;
+        background-color: #f0f0f0;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .input-container input {
+        width: calc(100% - 40px);
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+    }
+    .input-container button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="chat-container">
+    <div class="chat-header">
+        Chatbot
+    </div>
+    <div class="chat-body" id="chatBody">
+        <div class="bot-message">Hi there! How can I assist you today?</div>
+    </div>
+    <div class="input-container">
+        <input type="text" id="userInput" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    function sendMessage() {
+        var userInput = document.getElementById("userInput").value;
+        var chatBody = document.getElementById("chatBody");
+        
+        // Append user message
+        var userMessage = document.createElement("div");
+        userMessage.className = "chat-message";
+        userMessage.innerHTML = '<div class="user-message">' + userInput + '</div>';
+        chatBody.appendChild(userMessage);
+        
+        // Call function to generate bot response
+        generateBotResponse(userInput);
+        
+        // Clear input field
+        document.getElementById("userInput").value = "";
+        
+        // Scroll to bottom of chat
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function generateBotResponse(userInput) {
+        var chatBody = document.getElementById("chatBody");
+        
+        // Simple bot response for demonstration
+        var botResponse = document.createElement("div");
+        botResponse.className = "chat-message";
+        botResponse.innerHTML = '<div class="bot-message">I received: ' + userInput + '. How can I help you?</div>';
+        chatBody.appendChild(botResponse);
+    }
+</script>
+
+</body>
+</html>
