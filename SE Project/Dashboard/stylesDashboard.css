@@ -1,0 +1,107 @@
+.custom-body {
+    background: linear-gradient(to right, rgba(6, 6, 225, 0.457) 50%, rgb(154, 159, 178) 80%);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center; /* Center the hexagon grid on the page */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+.navigation-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    width: 95%; /* Ensure the navbar spans the full width */
+}
+
+nav img {
+    width: 5%;
+}
+
+.hexagon-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Set 3 columns */
+    grid-gap: 40px; /* Increase the space between the hexagons */
+    padding: 40px; /* Add more padding to the grid */
+    width: 80vw; /* Set a maximum width for the grid */
+}
+
+.hexagon-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+}
+
+.hexagon {
+    width: 200px; /* Adjust size if necessary */
+    height: 200px; /* Adjust size if necessary */
+    background-color: #112240;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transition: transform 0.3s, background-color 0.3s;
+    cursor: pointer; /* Indicates an interactive element */
+}
+
+.hexagon:hover {
+    transform: scale(1.1);
+    background-color: #1a2a41;
+}
+
+.hexagon span {
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    user-select: none;
+    padding: 0 10px;
+}
+
+/* Adjust hexagon alignment for every second item */
+.hexagon-item:nth-child(odd) {
+    margin-top: 52px; /* Half the height of the hexagon for offset */
+}
+
+@media (max-width: 767px) {
+    .hexagon-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+        padding: 20px;
+    }
+    .hexagon-item:nth-child(odd) {
+        margin-top: 26px; /* Adjust for smaller screens */
+    }
+}
+
+.site-footer {
+    
+    color: #fff; /* White text color */
+    text-align: center; /* Center-align the text */
+    padding: 20px 0; /* Padding above and below */
+    font-size: 16px; /* Set font size */
+}
+
+.site-footer .footer-content {
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    gap: 20px; /* Space between links */
+}
+
+.site-footer a {
+    color: #1a2a41; /* White text color for links */
+    text-decoration: none; /* No underline */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.site-footer a:hover {
+    color: #3498db; /* Change color on hover */
+}
+
