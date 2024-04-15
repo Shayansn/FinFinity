@@ -13,11 +13,23 @@
 </repositories>
 
 <dependencies>
-<dependency>
-    <groupId>e-iceblue</groupId>
-    <artifactId>spire.pdf</artifactId>
-    <version>10.3.4</version>
-</dependency>
+	<dependency>
+	    <groupId>e-iceblue</groupId>
+	    <artifactId>spire.pdf</artifactId>
+	    <version>10.3.4</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>e-iceblue</groupId>
+	    <artifactId>spire.pdf.free</artifactId>
+	    <version>9.12.3</version>
+	</dependency>
+
+	<dependency>
+	    <groupId>e-iceblue</groupId>
+	    <artifactId>spire.doc</artifactId>
+	    <version>12.4.1</version>
+	</dependency>
 </dependencies>
 
 </project>
