@@ -18,14 +18,22 @@ const pool = mysql.createPool({
 
 app.post('/submit-spending', async (req, res) => {
     try {
-        const { amount, category } = req.body;
+        const { amount, category, spendingDate } = req.body;
+        console.log('Amount:', amount);
+        console.log('Category:', category);
+        console.log('Spending Date:', spendingDate);
+
+        if (!amount || !category || !spendingDate) {
+            throw new Error('Missing required fields');
+        }
+
         const connection = await pool.getConnection();
-        await connection.query('INSERT INTO NewSpendings (amount, category) VALUES (?, ?)', [amount,category]);
+        await connection.query('INSERT INTO NewSpendings (amount, category, spendingDate) VALUES (?, ?, ?)', [amount, category, spendingDate]);
         connection.release();
         res.status(200).send('Spending submitted successfully');
     } catch (error) {
         console.error('Error:', error);
-        res.status(500).send('Failed to submit spending');
+        res.status(500).send('Failed to submit spending: ' + error.message);
     }
 });
 
