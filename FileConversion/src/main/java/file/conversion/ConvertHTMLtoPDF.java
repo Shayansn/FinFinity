@@ -19,14 +19,19 @@ public class ConvertHTMLtoPDF {
 	public static void main(String[] args) throws IOException {
 		//Invoke the custom method HtmlToString() to convert HTML file to string
 		String htmlString = 
-				HtmlToString("C:\\Users\\mohta\\Documents\\mus210002-workspace\\FinFinity\\FileConversion\\src\\main\\resources\\goalTracker.html");
-		
+				//HtmlToString("C:\\Users\\mohta\\Documents\\mus210002-workspace\\FinFinity\\FileConversion\\src\\main\\resources\\goalTracker.html");
+				HtmlToString("SE Project/goalTracker.html");
 		//Specify the output file path
+		// String outputFile = 
+		// 		"C:\\Users\\mohta\\Documents\\mus210002-workspace\\FinFinity\\FileConversion\\src\\main\\resources\\HtmlToPdf.pdf";
 		String outputFile = 
-				"C:\\Users\\mohta\\Documents\\mus210002-workspace\\FinFinity\\FileConversion\\src\\main\\resources\\HtmlToPdf.pdf";
+				"FileConversion/src/main/resources/HtmlToPDF.pdf";
 		
-		//Specify the plugin path
+		//Download plugins from the link:
+		// https://www.e-iceblue.com/downloads/plugins/plugins-windows-x64.zip
+		//and then specify the plugin path:
 		String pluginPath = "C:\\Program Files\\plugins";
+		
 		
 		//Set Plugin Path
 		HtmlConverter.setPluginPath(pluginPath);
