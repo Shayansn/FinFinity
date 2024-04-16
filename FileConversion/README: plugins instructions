@@ -1,8 +1,0 @@
-Must download plugins from the link:
-
-Windows x64: https://www.e-iceblue.com/downloads/plugins/plugins-windows-x64.zip
-Windows x86: https://www.e-iceblue.com/downloads/plugins/plugins-windows-x86.zip
-Linux: https://www.e-iceblue.com/downloads/plugins/java/plugins-linux-x64.zip
-MacOS x64: https://www.e-iceblue.com/downloads/plugins/java/plugins-macosx-x64.zip
-
-and specify plugin path on ConvertHTMLtoPDF.java file.
