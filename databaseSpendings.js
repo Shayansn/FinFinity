@@ -58,6 +58,27 @@ app.delete('/delete-spending', async (req, res) => {
     }
 });
 
+app.put('/update-spending', async (req, res) => {
+    try {
+        const { amount, category, spendingDate } = req.body;
+        console.log('Amount:', amount);
+        console.log('Category:', category);
+        console.log('Spending Date:', spendingDate);
+
+        if (!amount || !category || !spendingDate) {
+            throw new Error('Missing required fields');
+        }
+
+        const connection = await pool.getConnection();
+        await connection.query('UPDATE NewSpendings SET amount = ?, category = ?, spendingData = ?', [amount, category, spendingDate]);
+        connection.release();
+        res.status(200).send('Spending updated successfully');
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Failed to update spending: ' + error.message);
+    }
+});
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
