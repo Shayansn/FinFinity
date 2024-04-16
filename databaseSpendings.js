@@ -37,6 +37,27 @@ app.post('/submit-spending', async (req, res) => {
     }
 });
 
+app.delete('/delete-spending', async (req, res) => {
+    try {
+        const { amount, category, spendingDate } = req.body;
+        console.log('Amount:', amount);
+        console.log('Category:', category);
+        console.log('Spending Date:', spendingDate);
+
+        if (!amount || !category || !spendingDate) {
+            throw new Error('Missing required fields');
+        }
+
+        const connection = await pool.getConnection();
+        await connection.query('DELETE FROM NewSpendings WHERE amount = ? AND category = ? AND spendingDate = ?', [amount, category, spendingDate]);
+        connection.release();
+        res.status(200).send('Spending submitted successfully');
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Failed to submit spending: ' + error.message);
+    }
+});
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
