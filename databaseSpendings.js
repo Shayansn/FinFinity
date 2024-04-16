@@ -51,10 +51,10 @@ app.delete('/delete-spending', async (req, res) => {
         const connection = await pool.getConnection();
         await connection.query('DELETE FROM NewSpendings WHERE amount = ? AND category = ? AND spendingDate = ?', [amount, category, spendingDate]);
         connection.release();
-        res.status(200).send('Spending submitted successfully');
+        res.status(200).send('Spending deleted successfully');
     } catch (error) {
         console.error('Error:', error);
-        res.status(500).send('Failed to submit spending: ' + error.message);
+        res.status(500).send('Failed to delete spending: ' + error.message);
     }
 });
 
