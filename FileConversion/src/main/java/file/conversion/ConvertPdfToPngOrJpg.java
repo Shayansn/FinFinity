@@ -1,3 +1,6 @@
+//disregard
+//was assigned to code PDF > PNG/JPG but had to scrap and restart, coding HTML > PNG/JPG/PDF files
+
 package file.conversion;
 
 import java.awt.image.BufferedImage;

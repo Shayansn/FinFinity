@@ -8,20 +8,15 @@
 #Test Case 2: The chatbot will end the conversation when saying specific words.
 #Execution: The chatbot will end the conversation when the user manually enters "quit", "exit", or "bye".
 
-
-
-
-
-
-
-
 from openai import OpenAI
 
+# Your API key should be assigned as a string, make sure it's correctly set.
 api_key = ""
 client = OpenAI(api_key=api_key)
 
 
 def chat_with_gpt(prompt):
+    # Sending a prompt to the chat model and getting a response.
     response = client.chat.completions.create(
         model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}]
     )

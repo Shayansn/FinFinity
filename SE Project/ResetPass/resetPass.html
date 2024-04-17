@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +19,7 @@
             color: #000; 
         }
 
+        
         .form-container {
             margin: 0 auto;
             max-width: 400px;
@@ -25,23 +28,14 @@
             margin-top: 50px; 
         }
 
+        
         .form-label {
             font-weight: bold;
             font-size: 18px;
             color: #ffffff; 
         }
 
-        /* Assuming you add a class named 'logo-link' to your <a> tag */
-        .logo-link img {
-            transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition for transform and opacity */
-        }
-
-        .logo-link:hover img {
-            transform: scale(1.1); /* Slightly increase size */
-            opacity: 0.8; /* Slightly decrease opacity */
-        }
-
-
+        
         .form-control {
             margin-bottom: 15px; 
             border: none;
@@ -51,6 +45,7 @@
             box-shadow: none; 
         }
 
+        
         .form-control:focus {
             box-shadow: none;
         }
@@ -73,24 +68,48 @@
         }
     </style>
 </head>
-<body style="background: linear-gradient(to right, rgba(6, 6, 225, 0.457) 50%, rgb(154, 159, 178) 80%);">
-    <nav style="background-color: transparent;" class="navbar navbar-light">
-        <a href="../Homepage/home.html" class = "logo-link" style="margin-top: 5px; margin-left: 10px; display: inline-block;">
-            <img style="width: 50px; overflow: hidden;" src="../logo.png" alt="Logo">
-        </a>
-        <a href="../Login/login.html" style="margin-right: 25px;">Log In</a>
+<body style="background: linear-gradient(to right, rgba(6, 6, 225, 0.457) 50%, rgb(154, 159, 178) 80%);;">
+    <nav style="background-color: #D9D9D9;" class="navbar navbar-light">
+        <img style="width: 86px; height: 86px; overflow: hidden; margin-top: 5px; margin-left: 10px;" src="Logo.png">
+        <a href="LogInPage.html" style="margin-right: 25px;">Log In</a>
     </nav>
+
     
     
     <div class="form-container">
-        <label for="inputPassword1" class="form-label">Enter New Password</label>
-        <input type="password" id="inputPassword1" class="form-control" aria-describedby="passwordHelpBlock">
-        <br>
-
-        <label for="confirmPassword1" class="form-label">Confirm New Password</label>
-        <input type="password" id="confirmPassword1" class="form-control" aria-describedby="passwordHelpBlock">
-        <br>
-        <button type="submit" class="submit-btn">Submit</button>
+        <form method="POST" action="http://localhost:4004/reset-password">
+            <label for="inputEmail" class="form-label">Enter Email</label>
+            <input type="email" name="email" id="inputEmail" class="form-control" required>
+        
+            <label for="inputPassword" class="form-label">Enter New Password</label>
+            <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpBlock">
+            <br>
+        
+            <label for="confirmPassword" class="form-label">Confirm New Password</label>
+            <input type="password" id="confirmPassword" class="form-control" aria-describedby="passwordHelpBlock">
+        
+            <br>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
     </div>
+
+
 </body>
+
+<script>
+    document.querySelector('form').onsubmit = function(event) {
+        var newPassword = document.getElementById('inputPassword').value;
+        var confirmPassword = document.getElementById('confirmPassword').value;
+        
+        if (newPassword !== confirmPassword) {
+            event.preventDefault(); // Stop the form from submitting
+            alert('Passwords do not match!');
+            return false;
+        }
+        return true;
+    };
+</script>
+
+
+
 </html>
