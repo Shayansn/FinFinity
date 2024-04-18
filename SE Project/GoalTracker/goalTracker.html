@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Goal Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background: linear-gradient(to right, rgba(6, 6, 225, 0.457) 50%, rgb(154, 159, 178) 80%);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: transparent;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h3 {
+            color: #FFF;
+            margin: 0; /* Add this to remove default margins */
+        }
+
+        .logo-link img {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .logo-link:hover img {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 56px);
+        }
+
+        canvas {
+            max-width: 600px;
+        }
+
+        /* Other styles... */
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="../Dashboard/indexDashboard.html" class="logo-link">
+            <img src="../logo.png" alt="Logo" style="width: 50px;">
+        </a>
+        <h3>Goal Tracker</h3>
+    </nav>
+    <div class="container">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Rent', 'Food', 'Car/Travel', 'Savings', 'Investing'],
+                datasets: [{
+                    data: [29.2, 13.3, 8.3, 4.2, 44.8],
+                    backgroundColor: [
+                        'red',
+                        'purple',
+                        'yellow',
+                        'orange',
+                        'green'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            color: 'white',
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+                    tooltip: {
+                        bodyFont: {
+                            size: 14
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
