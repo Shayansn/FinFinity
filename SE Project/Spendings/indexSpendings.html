@@ -4,182 +4,176 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Spendings App</title>
-  <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+
+.navbar-custom {
+            background-color: #D9D9D9;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        
+        .navbar-custom a {
+            color: #333;
+            font-weight: bold;
+            font-size: 24px; /* Updated font size */
+            text-decoration: none; /* Remove underline */
+            transition: color 0.3s ease;
+        }
+
+        .navbar-custom a:hover {
+            color: #000;
+        }
+
+        .button-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+
+        body {
+            background: linear-gradient(to right, rgba(6, 6, 225, 0.457) 50%, rgb(154, 159, 178) 80%);
+            padding-top: 86px; /* Padding to push the content below the navbar */
+        }
+        table{
+            background-color: white;
+        }
+
+        .add-btn {
+        background: green ;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 28px;
+        transition: background 0.3s, transform 0.2s;
+        width: 300px;
+    }
+    
+    .add-btn:hover {
+        background-image: linear-gradient(45deg, rgb(154, 159, 178), rgba(6, 6, 225, 0.457));
+        transform: scale(1.05);
+        color: #fff;
+        text-decoration: none;
+    }
+
+
+  </style>
 </head>
 <body>
-  <div class="container mt-4">
-    <h1>My Spendings</h1>
-    <table class="table">
-      <thead>
+    <nav class="navbar navbar-light navbar-custom">
+        <div class="container-fluid">
+            <img src="Logo.png" alt="Logo" style="width: 86px; height: 86px; margin-top: 5px;">
+            <a href="indexDashboard.html">Home</a>
+        </div>
+    </nav>
+<br>
+    <br>
+    <br>
+  <div class="container">
+    <h1 style="text-align: center;">My Spendings</h1>
+    <br>
+    <div class="button-container">
+        <button class="add-btn" onclick="window.location.href='inputSpendings.html';">Add New Spending</button>
+    </div>
+    <br>
+    <table class="table table-hover table-striped table-bordered">
+      <thead class="thead-dark">
         <tr>
           <th>Amount</th>
           <th>Category</th>
           <th>Date</th>
-          <th><button class="delete-btn">Delete</button></th>
-          <th><button class="update-btn">Update</button></th>
+          <th>Actions</th>
         </tr>
       </thead>
-      <tbody id="spendings-table">
-        <tr>
-          <td>$53.01</td>
-          <td>Bills</td>
-          <td>4/15/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-        <tr>
-          <td>$5.05</td>
-          <td>Bills</td>
-          <td>4/15/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-        <tr>
-          <td>$0.01</td>
-          <td>Bills</td>
-          <td>4/15/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-        <tr>
-          <td>$12</td>
-          <td>Other</td>
-          <td>4/20/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-        <tr>
-          <td>$40.01</td>
-          <td>Bills</td>
-          <td>4/16/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-        <tr>
-          <td>$10.5</td>
-          <td>Food</td>
-          <td>4/18/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-        <tr>
-          <td>$200</td>
-          <td>Entertainment</td>
-          <td>4/19/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-        <tr>
-          <td>$15.75</td>
-          <td>Utilities</td>
-          <td>4/20/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-        <tr>
-          <td>$45</td>
-          <td>Transport</td>
-          <td>4/21/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-        <tr>
-          <td>$90</td>
-          <td>Healthcare</td>
-          <td>4/22/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-        <tr>
-          <td>$100000</td>
-          <td>Bills</td>
-          <td>4/18/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-      </tbody>
+      <tbody id="spendings-table"></tbody>
     </table>
   </div>
+
 
 </body>
 
 <script>
     window.onload = function() {
-        
-        function deleteRow(event) {
-            const row = event.target.closest('tr');
-            row.remove();
-        }
-
-        function updateRow(event) {
-            const row = event.target.closest('tr');
-            const cells = row.querySelectorAll('td');
-
-            // Create input fields and submit button
-            const inputFields = Array.from(cells).map(cell => {
-            const value = cell.textContent.trim();
-            const input = document.createElement('input');
-            input.value = value;
-            return input;
-            });
-
-            const submitBtn = document.createElement('button');
-            submitBtn.textContent = 'Submit';
-
-            // Replace cell content with input fields and submit button
-            cells.forEach((cell, index) => {
-            if (index < 3) {
-                cell.textContent = '';
-                cell.appendChild(inputFields[index]);
-            } else if (index === 3) {
-                cell.textContent = '';
-                cell.appendChild(submitBtn);
-            }
-            });
-
-            // Handle submit button click
-            submitBtn.addEventListener('click', () => {
-            // Update row with input field values
-            cells.forEach((cell, index) => {
-                if (index < 3) {
-                    cell.textContent = inputFields[index].value;
-                }
-                });
-            });
-
-            // Add event listeners to delete buttons
-            const deleteButtons = document.querySelectorAll('.delete-btn');
-            deleteButtons.forEach(btn => {
-                btn.addEventListener('click', deleteRow);
-            });
-
-            // Add event listeners to update buttons
-            const updateButtons = document.querySelectorAll('.update-btn');
-            updateButtons.forEach(btn => {
-                btn.addEventListener('click', updateRow);
-            });
-        }
-
-      fetch('http://localhost:4010/spendings')
+        fetch('http://localhost:4014/spendings')
         .then(response => response.json())
         .then(data => {
-          const tableBody = document.getElementById('spendings-table');
-          data.forEach(spend => {
-            const row = `<tr>
-              <td>${spend.amount}</td>
-              <td>${spend.category}</td>
-              <td>${new Date(spend.spendingDate).toLocaleDateString()}</td>
-              <td><button class="delete-btn">Delete</button></td>
-              <td><button class="update-btn">Update</button></td>
-            </tr>`;
-            tableBody.innerHTML += row;
-          });
+            const tableBody = document.getElementById('spendings-table');
+            data.forEach(spend => {
+                const tr = document.createElement('tr');
+                tr.id = `spend-${spend.id}`;
+                tr.innerHTML = `
+                    <td id="amount-${spend.id}">${spend.amount}</td>
+                    <td id="category-${spend.id}">${spend.category}</td>
+                    <td id="date-${spend.id}">${new Date(spend.spendingDate).toLocaleDateString()}</td>
+                    <td>
+                        <button  class="btn btn-danger btn-sm" onclick="deleteSpending(${spend.id})">Delete</button>
+                        <button  class="btn btn-primary btn-sm" onclick="editSpending(${spend.id})">Edit</button>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+            });
         })
         .catch(error => {
-          console.error('Error fetching spendings:', error);
+            console.error('Error fetching spendings:', error);
+            alert('Failed to fetch spendings: ' + error.message);
         });
     };
-  </script>
-  
-</html>
+    
+    function deleteSpending(id) {
+        fetch(`http://localhost:4014/delete-spending/${id}`, { method: 'DELETE' })
+        .then(response => {
+            if (response.ok) {
+                alert('Spending deleted');
+                document.getElementById(`spend-${id}`).remove(); 
+            } else {
+                throw new Error('Failed to delete spending');
+            }
+        })
+        .catch(error => {
+            console.error('Error deleting spending:', error);
+            alert('Error deleting spending: ' + error.message);
+        });
+    }
+    
+    function editSpending(id) {
+        const amount = prompt("Enter new amount:", document.getElementById(`amount-${id}`).textContent);
+        const category = prompt("Enter new category:", document.getElementById(`category-${id}`).textContent);
+        const spendingDate = prompt("Enter new date (YYYY-MM-DD):", document.getElementById(`date-${id}`).textContent);
+    
+        if (amount && category && spendingDate) {
+            console.log(`Updating spending with ID: ${id}, Amount: ${amount}, Category: ${category}, Date: ${spendingDate}`);
+            fetch(`http://localhost:4014/update-spending/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ amount, category, spendingDate })
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Spending updated');
+                    document.getElementById(`amount-${id}`).textContent = amount;
+                    document.getElementById(`category-${id}`).textContent = category;
+                    document.getElementById(`date-${id}`).textContent = new Date(spendingDate).toLocaleDateString();
+                } else {
+                    return response.text().then(text => Promise.reject(text));
+                }
+            })
+            .catch(error => {
+                console.error('Error updating spending:', error);
+                alert('Failed to update spending: ' + error);
+            });
+        } else {
+            alert('All fields are required.');
+        }
+    }
+    </script>
+    
