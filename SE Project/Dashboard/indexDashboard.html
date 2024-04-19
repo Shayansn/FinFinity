@@ -11,13 +11,15 @@
 <body class="custom-body">
     <nav class="navigation-bar px-3 bg-light">
         <img src="../logo.png" alt="logo" class="logo-link">
-        <i class="fas fa-user-circle profile-icon"></i> 
+        <a href="../ProfilePage/ProfilePage.html" class="profile-link">
+            <i class="fas fa-user-circle profile-icon"></i>
+        </a> 
     </nav>
     <div class="hexagon-grid">
-        <div class="hexagon-item"><div class="hexagon"><span>Account</span></div></div>
-        <div class="hexagon-item"><div class="hexagon"><span>Budget</span></div></div>
+        <div class="hexagon-item"><div class="hexagon" id="goalTracker-hexagon"><span>Goal Tracker</span></div></div>
+        <div class="hexagon-item"><div class="hexagon" id="budget-hexagon"><span>Budget</span></div></div>
         <div class="hexagon-item"><div class="hexagon" id="spending-hexagon"><span>Spendings</span></div></div>
-        <div class="hexagon-item"><div class="hexagon"><span>Goals</span></div></div>
+        <div class="hexagon-item"><div class="hexagon" id="goals-hexagon"><span>Goals</span></div></div>
         <div class="hexagon-item"><div class="hexagon" id="chatbot-hexagon"><span>AI Chatbot</span></div></div>
         <div class="hexagon-item"><div class="hexagon" id="logout-hexagon"><span>Logout</span></div></div>
     </div>

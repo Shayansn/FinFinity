@@ -19,7 +19,6 @@ body {
 
 /* Hexagon logo styles */
 .hexagon.logo-hexagon {
-    /* Replace with your hexagon size */
     width: 120px;
     height: 104px;
     background-color: #112240;
@@ -69,7 +68,8 @@ body {
     color: white;
 }
 
-.login-form button {
+.login-form button,
+.sign-up-button {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -78,6 +78,23 @@ body {
     background-color: #3498db;
     color: white;
     cursor: pointer;
+}
+
+.login-form button:hover,
+.sign-up-button:hover {
+    background-color: #2980b9; /* Darker shade for hover */
+    opacity: 0.95; /* Slight opacity change */
+}
+
+.sign-up-button {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px; /* Space from the login button */
+}
+
+.sign-up-button:hover {
+    background-color: #388E3C; /* Darker shade of green for hover */
 }
 
 .forgot-password {
@@ -129,7 +146,6 @@ body {
 .social-login-icons i:hover {
     color: #3498db;
 }
-
 
 /* Mock reCAPTCHA Badge styles */
 .recaptcha-badge {

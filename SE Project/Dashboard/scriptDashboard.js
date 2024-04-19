@@ -12,6 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const budgetHexagon = document.getElementById('budget-hexagon');
+    if (budgetHexagon) {
+        budgetHexagon.addEventListener('click', () => {
+            window.location.href = '../Budget/budget.html';
+        });
+    }
+
     const chatbotHexagon = document.getElementById('chatbot-hexagon');
     if(chatbotHexagon)
     {
@@ -26,7 +33,25 @@ document.addEventListener('DOMContentLoaded', () => {
     {
         logoutHexagon.addEventListener('click', () =>
         {
-            window.location.href = '../Homepage/home.html';
+            window.location.href = '../index.html';
+        });
+    }
+
+    const goalsHexagon = document.getElementById('goals-hexagon');
+    if(goalsHexagon)
+    {
+        goalsHexagon.addEventListener('click', () =>
+        {
+            window.location.href = '../Goals/indexGoal.html';
+        });
+    }
+
+    const goalTrackerHexagon = document.getElementById('goalTracker-hexagon');
+    if(goalTrackerHexagon)
+    {
+        goalTrackerHexagon.addEventListener('click', () =>
+        {
+            window.location.href = '../GoalTracker/goalTracker.html';
         });
     }
 });
