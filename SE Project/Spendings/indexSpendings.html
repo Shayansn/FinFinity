@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input Spending</title>
-    <link rel="stylesheet" href="styleSpendings.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <style>
-body {
-            background: linear-gradient(to right, rgba(6, 6, 225, 0.457) 50%, rgb(154, 159, 178) 80%);
-            padding-top: 86px; /* Padding to push the content below the navbar */
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Spendings App</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-        .navbar-custom {
+  <style>
+
+.navbar-custom {
             background-color: #D9D9D9;
             padding: 1rem 2rem;
             position: fixed;
@@ -41,87 +37,143 @@ body {
         margin-bottom: 20px;
     }
 
-    .view-btn {
-        background: white ;
+
+        body {
+            background: linear-gradient(to right, rgba(6, 6, 225, 0.457) 50%, rgb(154, 159, 178) 80%);
+            padding-top: 86px; /* Padding to push the content below the navbar */
+        }
+        table{
+            background-color: white;
+        }
+
+        .add-btn {
+        background: green ;
+        color: white;
         border: none;
         border-radius: 5px;
         padding: 10px 20px;
-        font-size: 32px;
+        font-size: 28px;
         transition: background 0.3s, transform 0.2s;
         width: 300px;
     }
-
-    .view-btn:hover {
+    
+    .add-btn:hover {
         background-image: linear-gradient(45deg, rgb(154, 159, 178), rgba(6, 6, 225, 0.457));
         transform: scale(1.05);
         color: #fff;
         text-decoration: none;
     }
-    </style>
+
+
+  </style>
 </head>
-<body class="custom-body">
+<body>
     <nav class="navbar navbar-light navbar-custom">
         <div class="container-fluid">
             <img src="Logo.png" alt="Logo" style="width: 86px; height: 86px; margin-top: 5px;">
             <a href="indexDashboard.html">Home</a>
         </div>
     </nav>
-
+<br>
     <br>
     <br>
-    <br>
-
-    <div class="h-100 d-flex align-items-center justify-content-center">
-        <div class="main col col-lg-5 h-40">
-            <p class="text-center fs-1">Add Spendings</p>
-            <form id="spending-form" method="post" action="http://localhost:4011/submit-spending">
-                <div class="form-group">
-                    <label for="amount" class="fs-2">Amount</label>
-                    <input type="number" class="form-control p-3" id="amount" name="amount" placeholder="Enter Spending ($)" required min="0.01" step="0.01">
-                </div>
-                <div class="form-group">
-                    <label for="category" class="fs-2">Category</label>
-                    <input type="text" class="form-control p-3" id="category" name="category" placeholder="Enter Category (Bills, Other, Groceries, Gas, Entertainment)" required>
-                </div>
-                <input type="hidden" id="spending-date" name="spendingDate">
-                <br>
-                <div class="form-group button-group">
-                    <button type="submit" class="btn btn-primary p-3">Submit</button>
-                </div>
-            </form>
-        </div>
-    </div>
+  <div class="container">
+    <h1 style="text-align: center;">My Spendings</h1>
     <br>
     <div class="button-container">
-        <button class="view-btn" onclick="window.location.href='indexSpendings.html';"> View Spendings</button>
+        <button class="add-btn" onclick="window.location.href='inputSpendings.html';">Add New Spending</button>
     </div>
+    <br>
+    <table class="table table-hover table-striped table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>Amount</th>
+          <th>Category</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="spendings-table"></tbody>
+    </table>
+  </div>
 
-    <script>
-        document.getElementById('spending-form').addEventListener('submit', function(event) {
-            const amountInput = document.getElementById('amount');
-            const amount = parseFloat(amountInput.value);
 
-            if (amount <= 0 || isNaN(amount)) {
-                event.preventDefault();
-                alert('Please enter a valid amount greater than $0.');
-                amountInput.value = '';
-                amountInput.focus();
-            } else {
-                const currentDate = new Date().toISOString().split('T')[0];
-                document.getElementById('spending-date').value = currentDate;
-            }
-        });
-
-        document.getElementById('category').addEventListener('blur', function(event) {
-            const input = event.target.value.toLowerCase().trim();
-            const allowedCategories = ['bills', 'other', 'groceries', 'gas', 'entertainment'];
-            if (!allowedCategories.includes(input)) {
-                event.target.value = '';
-                event.target.focus();
-            }
-        });
-    </script>
 </body>
-</html>
-  
-</html>
+
+<script>
+    window.onload = function() {
+        fetch('http://localhost:4014/spendings')
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.getElementById('spendings-table');
+            data.forEach(spend => {
+                const tr = document.createElement('tr');
+                tr.id = `spend-${spend.id}`;
+                tr.innerHTML = `
+                    <td id="amount-${spend.id}">${spend.amount}</td>
+                    <td id="category-${spend.id}">${spend.category}</td>
+                    <td id="date-${spend.id}">${new Date(spend.spendingDate).toLocaleDateString()}</td>
+                    <td>
+                        <button  class="btn btn-danger btn-sm" onclick="deleteSpending(${spend.id})">Delete</button>
+                        <button  class="btn btn-primary btn-sm" onclick="editSpending(${spend.id})">Edit</button>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching spendings:', error);
+            alert('Failed to fetch spendings: ' + error.message);
+        });
+    };
+    
+    function deleteSpending(id) {
+        fetch(`http://localhost:4014/delete-spending/${id}`, { method: 'DELETE' })
+        .then(response => {
+            if (response.ok) {
+                alert('Spending deleted');
+                document.getElementById(`spend-${id}`).remove(); 
+            } else {
+                throw new Error('Failed to delete spending');
+            }
+        })
+        .catch(error => {
+            console.error('Error deleting spending:', error);
+            alert('Error deleting spending: ' + error.message);
+        });
+    }
+    
+    function editSpending(id) {
+        const amount = prompt("Enter new amount:", document.getElementById(`amount-${id}`).textContent);
+        const category = prompt("Enter new category:", document.getElementById(`category-${id}`).textContent);
+        const spendingDate = prompt("Enter new date (YYYY-MM-DD):", document.getElementById(`date-${id}`).textContent);
+    
+        if (amount && category && spendingDate) {
+            console.log(`Updating spending with ID: ${id}, Amount: ${amount}, Category: ${category}, Date: ${spendingDate}`);
+            fetch(`http://localhost:4014/update-spending/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ amount, category, spendingDate })
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Spending updated');
+                    document.getElementById(`amount-${id}`).textContent = amount;
+                    document.getElementById(`category-${id}`).textContent = category;
+                    document.getElementById(`date-${id}`).textContent = new Date(spendingDate).toLocaleDateString();
+                } else {
+                    return response.text().then(text => Promise.reject(text));
+                }
+            })
+            .catch(error => {
+                console.error('Error updating spending:', error);
+                alert('Failed to update spending: ' + error);
+            });
+        } else {
+            alert('All fields are required.');
+        }
+    }
+    </script>
+    
