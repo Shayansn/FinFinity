@@ -1,185 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Spendings App</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-  <div class="container mt-4">
-    <h1>My Spendings</h1>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Amount</th>
-          <th>Category</th>
-          <th>Date</th>
-          <th><button class="delete-btn">Delete</button></th>
-          <th><button class="update-btn">Update</button></th>
-        </tr>
-      </thead>
-      <tbody id="spendings-table">
-        <tr>
-          <td>$53.01</td>
-          <td>Bills</td>
-          <td>4/15/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-        <tr>
-          <td>$5.05</td>
-          <td>Bills</td>
-          <td>4/15/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-        <tr>
-          <td>$0.01</td>
-          <td>Bills</td>
-          <td>4/15/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-        <tr>
-          <td>$12</td>
-          <td>Other</td>
-          <td>4/20/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-        <tr>
-          <td>$40.01</td>
-          <td>Bills</td>
-          <td>4/16/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-        <tr>
-          <td>$10.5</td>
-          <td>Food</td>
-          <td>4/18/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-        <tr>
-          <td>$200</td>
-          <td>Entertainment</td>
-          <td>4/19/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-        <tr>
-          <td>$15.75</td>
-          <td>Utilities</td>
-          <td>4/20/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-        <tr>
-          <td>$45</td>
-          <td>Transport</td>
-          <td>4/21/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-        <tr>
-          <td>$90</td>
-          <td>Healthcare</td>
-          <td>4/22/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-        <tr>
-          <td>$100000</td>
-          <td>Bills</td>
-          <td>4/18/2024</td>
-          <td><button class="delete-btn">Delete</button></td>
-          <td><button class="update-btn">Update</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Spending</title>
+    <link rel="stylesheet" href="styleSpendings.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+body {
+            background: linear-gradient(to right, rgba(6, 6, 225, 0.457) 50%, rgb(154, 159, 178) 80%);
+            padding-top: 86px; /* Padding to push the content below the navbar */
+        }
 
-</body>
-
-<script>
-    window.onload = function() {
+        .navbar-custom {
+            background-color: #D9D9D9;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
         
-        function deleteRow(event) {
-            const row = event.target.closest('tr');
-            row.remove();
+        .navbar-custom a {
+            color: #333;
+            font-weight: bold;
+            font-size: 24px; /* Updated font size */
+            text-decoration: none; /* Remove underline */
+            transition: color 0.3s ease;
         }
 
-        function updateRow(event) {
-            const row = event.target.closest('tr');
-            const cells = row.querySelectorAll('td');
+        .navbar-custom a:hover {
+            color: #000;
+        }
 
-            // Create input fields and submit button
-            const inputFields = Array.from(cells).map(cell => {
-            const value = cell.textContent.trim();
-            const input = document.createElement('input');
-            input.value = value;
-            return input;
-            });
+        .button-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
 
-            const submitBtn = document.createElement('button');
-            submitBtn.textContent = 'Submit';
+    .view-btn {
+        background: white ;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 32px;
+        transition: background 0.3s, transform 0.2s;
+        width: 300px;
+    }
 
-            // Replace cell content with input fields and submit button
-            cells.forEach((cell, index) => {
-            if (index < 3) {
-                cell.textContent = '';
-                cell.appendChild(inputFields[index]);
-            } else if (index === 3) {
-                cell.textContent = '';
-                cell.appendChild(submitBtn);
+    .view-btn:hover {
+        background-image: linear-gradient(45deg, rgb(154, 159, 178), rgba(6, 6, 225, 0.457));
+        transform: scale(1.05);
+        color: #fff;
+        text-decoration: none;
+    }
+    </style>
+</head>
+<body class="custom-body">
+    <nav class="navbar navbar-light navbar-custom">
+        <div class="container-fluid">
+            <img src="Logo.png" alt="Logo" style="width: 86px; height: 86px; margin-top: 5px;">
+            <a href="indexDashboard.html">Home</a>
+        </div>
+    </nav>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="main col col-lg-5 h-40">
+            <p class="text-center fs-1">Add Spendings</p>
+            <form id="spending-form" method="post" action="http://localhost:4011/submit-spending">
+                <div class="form-group">
+                    <label for="amount" class="fs-2">Amount</label>
+                    <input type="number" class="form-control p-3" id="amount" name="amount" placeholder="Enter Spending ($)" required min="0.01" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="category" class="fs-2">Category</label>
+                    <input type="text" class="form-control p-3" id="category" name="category" placeholder="Enter Category (Bills, Other, Groceries, Gas, Entertainment)" required>
+                </div>
+                <input type="hidden" id="spending-date" name="spendingDate">
+                <br>
+                <div class="form-group button-group">
+                    <button type="submit" class="btn btn-primary p-3">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="button-container">
+        <button class="view-btn" onclick="window.location.href='indexSpendings.html';"> View Spendings</button>
+    </div>
+
+    <script>
+        document.getElementById('spending-form').addEventListener('submit', function(event) {
+            const amountInput = document.getElementById('amount');
+            const amount = parseFloat(amountInput.value);
+
+            if (amount <= 0 || isNaN(amount)) {
+                event.preventDefault();
+                alert('Please enter a valid amount greater than $0.');
+                amountInput.value = '';
+                amountInput.focus();
+            } else {
+                const currentDate = new Date().toISOString().split('T')[0];
+                document.getElementById('spending-date').value = currentDate;
             }
-            });
-
-            // Handle submit button click
-            submitBtn.addEventListener('click', () => {
-            // Update row with input field values
-            cells.forEach((cell, index) => {
-                if (index < 3) {
-                    cell.textContent = inputFields[index].value;
-                }
-                });
-            });
-
-            // Add event listeners to delete buttons
-            const deleteButtons = document.querySelectorAll('.delete-btn');
-            deleteButtons.forEach(btn => {
-                btn.addEventListener('click', deleteRow);
-            });
-
-            // Add event listeners to update buttons
-            const updateButtons = document.querySelectorAll('.update-btn');
-            updateButtons.forEach(btn => {
-                btn.addEventListener('click', updateRow);
-            });
-        }
-
-      fetch('http://localhost:4010/spendings')
-        .then(response => response.json())
-        .then(data => {
-          const tableBody = document.getElementById('spendings-table');
-          data.forEach(spend => {
-            const row = `<tr>
-              <td>${spend.amount}</td>
-              <td>${spend.category}</td>
-              <td>${new Date(spend.spendingDate).toLocaleDateString()}</td>
-              <td><button class="delete-btn">Delete</button></td>
-              <td><button class="update-btn">Update</button></td>
-            </tr>`;
-            tableBody.innerHTML += row;
-          });
-        })
-        .catch(error => {
-          console.error('Error fetching spendings:', error);
         });
-    };
-  </script>
+
+        document.getElementById('category').addEventListener('blur', function(event) {
+            const input = event.target.value.toLowerCase().trim();
+            const allowedCategories = ['bills', 'other', 'groceries', 'gas', 'entertainment'];
+            if (!allowedCategories.includes(input)) {
+                event.target.value = '';
+                event.target.focus();
+            }
+        });
+    </script>
+</body>
+</html>
   
 </html>
