@@ -1,0 +1,76 @@
+.custom-body{
+    /* this is using normal css, created the background color*/
+    background:linear-gradient(to right, rgba(6, 6, 225, 0.457) 50%, rgb(154, 159, 178) 80%)
+}
+
+.navigation-bar{
+    /* makes things side by side instead of vertical */
+    display:flex;
+    /* adds the space in between the logo and my profile */
+    justify-content:space-between;
+    /* centers it */
+    align-items:center;
+    height:10vh;
+}
+nav img{
+    /* changes the size of the image */
+    width: 50px;
+}
+
+.logo-link img {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.logo-link:hover img {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+
+.main{
+    height:40vh;
+}
+
+.profile-icon {
+    font-size: 2rem; /* Or the size of the icon you want */
+    color: #000; /* Or the color you want */
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.profile-icon:hover {
+    color: #3498db; /* Example: Change color on hover */
+    transform: scale(1.1); /* Slightly increase size on hover */
+}
+
+.main form{
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.main form .dropdown{
+    display: flex;
+    flex-direction: column;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-group .btn {
+    flex-grow: 1; /* Make buttons expand */
+    margin: 5px; /* Add a little space between buttons */
+}
+
+.update-goals-button {
+    background-color: #4CAF50; /* Replace with your desired background color */
+    color: white; /* Replace with your desired text color */
+}
+
+/* Optional: Style for hover state */
+.update-goals-button:hover {
+    background-color: #45a049; /* A slightly darker shade for hover effect */
+}
