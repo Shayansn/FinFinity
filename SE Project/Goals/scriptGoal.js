@@ -33,6 +33,7 @@ function submitGoal(event)
   });
 }
 
+
 document.addEventListener('DOMContentLSoaded', function() {
   const form = document.getElementById('goal');
   if(form) {
