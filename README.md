@@ -1,4 +1,4 @@
-# FinFinity - http://finfinityse.s3-website.us-east-2.amazonaws.com (User:admin & Pass: admin, this is just until our DB is connected)
+# FinFinity - http://finfinityse.s3-website.us-east-2.amazonaws.com
 
 **Empower Your Wallet: Tracking Every Penny, Planning Every Possibility**
 
